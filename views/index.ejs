@@ -1,0 +1,33 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <script src = "/js/script.js"></script>
+</head>
+<body>
+<form>
+  <h1>Linked List Calculator</h1>
+    <fieldset>
+      <label for="name">List 1:</label>
+      <input type="text" id="list1" name="user_name">
+      <label for="name">List 2:</label>
+      <input type="text" id="list2" name="user_email">
+      <label>Function:</label>
+      <div id ="sect">
+      <input type="radio" id="r1" name="rate" value="union" class="light"> Union
+      <input type="radio" id="r2" name="rate" value="intersection" class="light"> Intersection
+      </div>
+    </fieldset>
+    <fieldset>
+      <button type="button" onclick="run()">Submit</button>
+      <label for="bio">Result:</label>
+      <textarea id="result" name="result" readonly></textarea>
+    </fieldset>
+    
+    <button type="button" onclick="reset()">Reset</button>
+  </form>
+  
+</body>
+</html>
