@@ -1,3 +1,4 @@
+
 var val1,val2,setv;
 function  check(){
    val1= document.getElementById("list1").value;
