@@ -15,21 +15,21 @@ function  check(){
     }
 
     if(val1.length < 1 || val2.length < 1 || setv == null){
-        alert("enter value in all fields");
+        alert("Enter value in all fields");
         reset();
         return false;
     }
     else{
        return true;
     }
-}class Node{
+}
+class Node{
     constructor(d)
     {
         this.data = d;
         this.next = null;
     }
 }
-
 class LinkedList{
     constructor(){
         this.head=null;
@@ -50,6 +50,7 @@ class LinkedList{
         }
         return false;
     }
+    
 }
 function run(){
     var list1 = new LinkedList();
@@ -62,11 +63,12 @@ function run(){
     val2 = val2.replace(/ {2,}/g,' ');
     val1 = val1.split(" ");
     val2 = val2.split(" ");
-    
-    for(var i=0;i<val1.length;i++){
+    let l1 = val1.length;
+    let l2 = val2.length;   
+    for(var i=0;i<l1;i++){
         list1.push(val1[i]);
     }
-    for(var i=0;i<val2.length;i++){
+    for(var i=0;i<l2;i++){
         list2.push(val2[i]);
     }
     if(setv == "union"){
@@ -83,7 +85,8 @@ function run(){
             }
             current2 = current2.next;
         }
-        print(list3);     
+        
+       
     }
     
     else if(setv == "intersection"){
@@ -100,9 +103,21 @@ function run(){
             current1 = current1.next;
             current2 = list2.head;
         }
-       print(list3);
+       
     }
-
+    var set1 = new Set();
+    var current = list3.head;
+    while(current != null){
+        set1.add(current.data);
+        current = current.next;
+    }
+    str = "";
+    for (let item of set1) {
+        str += item + " ->";
+    }
+    str += "null";
+    document.getElementById("result").value = str;
+      
 }
 }
 function reset(){
@@ -110,13 +125,22 @@ function reset(){
     document.getElementById("list2").value="";
     document.getElementById("sect").value="";
 }
-function print(list3){
-    str = list3.head.data;
-        current3 = list3.head.next;
-        while(current3 != null){
-            str+= " -> " + current3.data;
-            current3 = current3.next;
-        }
-        str += " -> null";
-        document.getElementById("result").value = str;
+
+
+function validate(evt) {
+    var theEvent = evt || window.event;
+  
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /^[0-9\s]*$/;
+    if( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
 }
